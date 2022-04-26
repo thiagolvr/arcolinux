@@ -1,1 +1,1 @@
-### my personal dot files about arcolinux
+### my personal dot files of arcolinux bspwm
