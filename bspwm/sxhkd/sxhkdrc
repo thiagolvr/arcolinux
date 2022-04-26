@@ -1,0 +1,324 @@
+#################################################################
+# SUPER + FUNCTION KEYS
+#################################################################
+
+#Example
+#super + F12
+ #   app
+
+#################################################################
+# SUPER + ... KEYS
+#################################################################
+
+#Thunar
+super + e
+    thunar
+
+#Edge
+super + n
+	microsoft-edge-stable	
+
+#Visual Studio Code
+super + v
+	code
+
+#Spotify
+super + m
+	spotify
+
+#Slack
+super + s
+	slack
+
+#arcolinux-logout
+super + x
+    arcolinux-logout
+
+
+#Pavucontrol
+super + p
+    pavucontrol
+
+
+#alacritty
+super + Return
+    alacritty
+
+#Xkill
+super + Escape
+    xkill
+
+#Keyboard dependent
+#alacritty
+super + KP_Enter
+	alacritty
+
+
+#dmenu
+super + space
+	dmenu_run
+	#dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+
+#################################################################
+# CONTROL + ALT KEYS
+#################################################################
+
+#Xfce4-settings-manager
+ctrl + alt + s
+     xfce4-settings-manager
+
+
+#################################################################
+# ALT + ... KEYS
+#################################################################
+
+#Wallpaper next
+#alt + n
+#    variety -n
+
+#Wallpaper previous
+#alt + p
+#    variety -p
+
+
+#################################################################
+#VARIETY KEYS WITH PYWAL
+#################################################################
+
+#Wallpaper trash
+#alt + shift + t
+#    variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper next
+#alt + shift + n
+#    variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper previous
+#alt + shift + p
+#    variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper favorite
+#alt + shift + f
+#    variety -f && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper update
+#alt + shift + u
+#    wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#################################################################
+# CONTROL + SHIFT KEYS
+#################################################################
+
+#Xcfe4-TaskManager
+ctrl + shift + Escape
+    xfce4-taskmanager
+
+
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#Scrot
+Print
+    scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+
+#screeenshooter
+ctrl + Print
+     xfce4-screenshooter
+
+#Gnome-Screenshot
+ctrl + shift + Print
+     gnome-screenshot -i
+
+
+#################################################################
+#     FUNCTION KEYS
+#################################################################
+
+#xfce4-terminal dropdown
+#F1
+#    xfce4-terminal --drop-down
+
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 5%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 5%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+#Brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+
+#################################################################
+##################   DESKTOP SPECIFIC    ########################
+#################################################################
+
+#kill
+super + q
+	bspc node -c
+
+
+# Increase/decrease window gap on focused desktop
+super + bracket{left,right}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+
+# set the window state
+alt + space
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Move floating window
+super + alt + {_,shift + }{Left,Down,Up,Right}
+	~/.config/bspwm/scripts/move-window {_,edge-}{west,south,north,east}
+
+# Cancel preselection
+super + ctrl + space
+	bspc node --presel-dir cancel
+
+#Reload bspwm
+super + shift + r
+	~/.config/bspwm/bspwmrc
+
+
+# Focus/swap windows by direction
+super + {_,shift + }{h,j,k,l}
+	bspc node --{focus,swap} {west,south,north,east}
+
+# Flip layout vertically/horizontally
+super + {_,shift + }a
+	bspc node @/ --flip {vertical,horizontal}
+
+
+#################################################################
+# SUPER + CONTROL KEYS
+#################################################################
+
+# Focus/swap windows by direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node --{focus} {west,south,north,east}
+
+# Contract tiled space
+super + ctrl + {h,j,k,l}
+	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+# Focus parent/brother/first/second for preselection
+super + ctrl + {e,r,t,y}
+	bspc node --focus @{parent,brother,first,second}
+
+# Preselect the splitting area for next window on leaf/parent
+super + ctrl + {u,i,o,p}
+	bspc node --presel-dir \~{west,south,north,east}
+
+# Define splitting ratio for next window on leaf/parent
+super + ctrl + {_,shift +}{1-9}
+	bspc node {_,@/} --presel-ratio 0.{1-9}
+
+#################################################################
+# ALT + SHIFT KEYS
+#################################################################
+
+# Expand tiled space
+alt + shift + {h,j,k,l}
+	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+#################################################################
+# CTRL + ALT KEYS
+#################################################################
+
+# Focus next/previous window
+ctrl + alt + Left
+	bspc node --focus west
+
+# Focus next/previous window
+ctrl + alt + Right
+	bspc node --focus east
+
+# Focus Up window
+ctrl +alt + Up
+	bspc node --focus north
+
+# Focus Down window
+ctrl + alt + Down
+	bspc node --focus south
+
+#################################################################
+##################   AZERTY/QWERTY/ ... KEYBOARD#################
+#################################################################
+
+#Switch here between qwerty and azerty or make new one
+#Focus selected desktop FOR QWERTY KEYBOARDS
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+
+#Focus selected desktop	FOR BELIGIAN AZERTY KEYBOARDS
+#super + {ampersand,eacute,quotedbl,apostrophe,parenleft,section,egrave,exclam,ccedilla,agrave}
+#    bspc desktop -f '^{1-9,10}'
+
+#Focus selected desktop	FOR FRNECH AZERTY KEYBOARDS
+#super + {ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
+#    bspc desktop -f '^{1-9,10}'
+
+#################################################################
+
+#Switch here between qwerty and azerty or make new one
+#Move window to selected desktop FOR QWERTY KEYBOARDS
+super + shift + {1-9,0}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
+
+#Move window to selected desktop FOR AZERTY KEYBOARDS
+#super + shift + {ampersand,eacute,quotedbl,apostrophe,parenleft,section,egrave,exclam,ccedilla,agrave}
+#    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
+
+#################################################################
+
+
+## super & mouse scroll
+
+# Focused desktop window gap
+super + button{4,5}
+  bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 2 ))
