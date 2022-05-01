@@ -3,8 +3,12 @@
 #################################################################
 
 #Thunar
+#super + e
+#    thunar
+
+#Ranger
 super + e
-    thunar
+	alacritty -e ranger
 
 #Edge
 super + n
@@ -74,7 +78,7 @@ Print
 
 #screeenshooter
 ctrl + Print
-     xfce4-screenshooter
+     gnome-screenshot -i
 
 #################################################################
 #     MULTIMEDIA KEYS
