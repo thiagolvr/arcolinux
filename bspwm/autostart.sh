@@ -29,7 +29,7 @@ fi
 
 #Some ways to set your wallpaper besides variety or nitrogen
 #feh --bg-scale ~/.config/bspwm/wall.png &
-feh --bg-fill ~/Pictures/wallpaper14.jpg &
+feh --bg-fill ~/Pictures/wallpaper20.jpg &
 #feh --randomize --bg-fill ~/Pictures/*
 #feh --randomize --bg-fill ~/.config/variety/Favorites/* &
 
@@ -41,3 +41,4 @@ numlockx on &
 picom --config $HOME/.config/bspwm/picom.conf &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
+gio mount -d /dev/sdb1 &

@@ -10,9 +10,13 @@
 super + e
 	alacritty -e ranger
 
-#Edge
+#Notion
 super + n
-	microsoft-edge-stable	
+	notion-app
+
+#Edge
+super + b 
+	microsoft-edge-stable
 
 #Visual Studio Code
 super + v
